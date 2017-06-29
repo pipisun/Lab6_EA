@@ -32,9 +32,8 @@ public class ItemDaoImpl extends GenericDaoImpl<Item> implements ItemDao {
 	public List<Item> findByCategoryName(String categoryName) {
 		 
 		// TODO  Replace this find ALL query with a NAMED query to find by category name
-		Query query =  entityManager.createQuery("from Item");
-
-		return (List<Item>) query.getResultList();
+		Query query =  entityManager.createNamedQuery("Item.findByCategoryName");
+		return (List<Item>) query.setParameter("categoryname", categoryName).getResultList();
 	}
 
 	public List<Item> findBySellerOrBuyer(Integer initialPrice, User buyer, User seller) {
@@ -44,16 +43,17 @@ public class ItemDaoImpl extends GenericDaoImpl<Item> implements ItemDao {
 		String or = "";
 		
 		// TODO Seller Test
-		if (seller != null)	sellerPrice=  "( )";
+		if (seller != null)	sellerPrice=  "(i.initialPrice > ?1)";
 		// TODO Buyer test
-		if (buyer != null)	buyerPrice=  "( )";
+		if (buyer != null)	buyerPrice=  "(i.reservePrice = i.initialPrice)";
 		if (buyer != null && seller != null) or = "OR";
 
 		Query query = entityManager.createQuery("select distinct i from Item i, User u where "
-				+      "?????? " );
-
-		//	TODO Set parameters here....	
-			     
+				+      sellerPrice + or + buyerPrice);
+		
+		//	TODO Set parameters here....
+		if (seller != null)
+			query.setParameter(1, price);
 		return (List<Item>) query.getResultList();
 	}
 	

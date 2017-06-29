@@ -13,9 +13,10 @@ import java.util.*;
 
 @Entity
 @Table(name = "ITEM")
+@NamedQuery(name = "Item.findByCategoryName", query = "select i from Item i join i.categories c where c.name=:categoryname")
  public class Item   {
 
-     @Id 
+    @Id 
  	@GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ITEM_ID")
     private Long id = null;
