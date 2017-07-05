@@ -29,6 +29,10 @@ public class ItemDaoImpl extends GenericDaoImpl<Item> implements ItemDao {
 		super.setDaoType(Item.class );
 		}
 	
+	public List<Item> findAll() {
+		return null;
+	}
+	
 	public List<Item> findByCategoryName(String categoryName) {
 		 
 		// TODO  Replace this find ALL query with a NAMED query to find by category name

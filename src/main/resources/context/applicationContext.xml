@@ -49,7 +49,9 @@
    
    <!-- Scan for  transaction-based resources -->
    	<context:component-scan base-package="edu.mum" />
-  
+    
+    <aop:aspectj-autoproxy />
+     
     <tx:annotation-driven transaction-manager="transactionManager"/>
  
    <bean id="persistenceExceptionTranslationPostProcessor"

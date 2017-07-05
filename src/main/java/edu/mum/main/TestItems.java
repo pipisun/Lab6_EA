@@ -1,6 +1,7 @@
 package edu.mum.main;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -79,5 +80,9 @@ public class TestItems {
  		    userService.update(buyer);
  
 
+	}
+	
+	public List<Item> findAll() {
+		return itemService.findAll();
 	}
 }

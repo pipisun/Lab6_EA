@@ -32,6 +32,7 @@ public class Main {
   
     testUsers.setupUsers();
     testItems.setupItems();
+    testItems.findAll();
     
     // Named Query 
     testItemCategory.testItemCategory();

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.mum.aspect.annotation.Logging;
 import edu.mum.dao.GenericDao;
 import edu.mum.dao.UserDao;
 import edu.mum.domain.User;
@@ -17,8 +18,8 @@ public class UserServiceImpl implements edu.mum.service.UserService {
  	@Autowired
 	private UserDao userDao;
 
- 	
-     public void save( User user) {  		
+ 	@Logging
+    public void save( User user) {  		
   		userDao.save(user);
  	}
   	
